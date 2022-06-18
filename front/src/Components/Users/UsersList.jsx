@@ -29,8 +29,6 @@ const columns = [
 
 const UsersList = () => {
     const {setAlert} = useContext(AlertContext)
-
-
     const [rows, setRows] = useState([])
     useEffect(() => {
         getUsers().then((data)=>{
@@ -40,16 +38,17 @@ const UsersList = () => {
         })
     },[])
 
-
     return (
         <Box sx={{
             width:"100%",
         }}>
-            <EnchancedTable rows={rows} columns={columns} label={"Список користувачів"}>
-
+            <EnchancedTable
+                rows={rows}
+                columns={columns}
+                label={"Список користувачів"}
+            >
             </EnchancedTable>
         </Box>
-
     );
 };
 

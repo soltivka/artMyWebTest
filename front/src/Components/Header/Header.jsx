@@ -11,9 +11,7 @@ export default function Header() {
     return (
         <Box sx={{ flexGrow: 1 }} pb={2}>
             <AppBar position="static">
-
                 <Toolbar>
-
                     <IconButton
                         size="large"
                         edge="start"

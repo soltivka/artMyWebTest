@@ -4,13 +4,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {getUser, putUser} from "../../API/Users/users";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import {FormControlLabel, FormHelperText, Input, Select, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {ToggleButton, ToggleButtonGroup} from "@mui/material";
 import Box from "@mui/material/Box";
 import isEmail from 'validator/lib/isEmail';
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import FemaleIcon from '@mui/icons-material/Female';
@@ -60,6 +57,7 @@ export default function UserEditForm() {
             return {...prev}
         })
     }
+
     const changeEmail = (e) => {
         const value = e.target.value
         setUser((prev) => {
@@ -68,6 +66,7 @@ export default function UserEditForm() {
         })
         setInvalidEmail(!isEmail(value))
     }
+
     const handleStatusChange = (e) => {
         if (user.status === "active") {
             setUser((prev) => {

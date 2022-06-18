@@ -71,7 +71,7 @@ export const applyFilters = function(array, filters){
         if (!filter.column.date) {
             //по умолчанию сравнивает строки
             return acc.filter((el) => {
-                const currValue = el[id]
+                const currValue = el[id].toString()
                 if(!currValue){return false}
                 if (filter.strict && currValue === filter.value) { return true }
                 if (filter.strict && currValue !== filter.value) { return false }
