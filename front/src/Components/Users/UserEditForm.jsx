@@ -100,71 +100,88 @@ export default function UserEditForm() {
     const Form = () => {
         return (
             <Grid container
-                  direction={"column"}
-                  p={5}
                   sx={{
-                      backgroundColor: "white",
-                      zIndex: "10",
-                      width: "60%",
-                      maxWidth:"500px",
-                      height: "60%",
+                      width: "100%",
+                      height: "100%",
+                      alignItems:"center",
+                      justifyContent:"center"
                   }}
                   onClick={(e) => e.stopPropagation()}
-            > <Typography variant={"h6"} color={"primary"} pb={2}>Користувач № {user.id}</Typography>
+            >
+                <Grid item
+                      xl={3}
+                      md={4}
+                      sm={8}
+                      xs={11}
+                      p={4}
+                      sx={{
+                          backgroundColor:"white",
+                          display:"flex",
+                          flexDirection:"column"
+                }}
 
-                <TextField
-                    label="Ім'я"
-                    variant="outlined"
-                    value={user.name}
-                    onChange={changeName}
-                    sx={{input: {textAlign: "center"},
-                        margin:"15px",
-                    }}
 
-                />
-                <TextField
-                    label="Email"
-                    variant="outlined"
-                    error={invalidEmail}
-                    value={user.email}
-                    onChange={changeEmail}
-                    maxWidth={"400px"}
-                    sx={{input: {textAlign: "center"},
-                        margin:"15px",
-                    }}
-                />
-                <Box sx={{
-                    display:"flex",
-                    justifyContent:"space-around"
-                }}>
-                    <ToggleButtonGroup
-                        color="primary"
-                        value={user.gender}
-                        exclusive
-                        onChange={handleGenderChange}
-                        sx={{display:"flex", justifyContent:"center"}}
-                    >
-                        <ToggleButton value="female"><FemaleIcon/></ToggleButton>
-                        <ToggleButton value="male"><MaleIcon/></ToggleButton>
-                    </ToggleButtonGroup>
-                    <Box display={"flex"}>
-                        <Typography color={"black"}>Off</Typography>
-                        <Switch
-                            inputProps={{ 'aria-label': 'ant design' }}
-                            checked={user.status === "active"}
-                            onChange={handleStatusChange}
-                        />
-                        <Typography color={"black"}>On</Typography>
-                    </Box>
-
-                </Box>
-                <Button
-                    variant="contained"
-                    onClick={handlePutUserClicked}
-                    sx={{  margin:"15px",}}
                 >
-                    Зберегти
-                </Button>
+                    <Typography variant={"h6"} color={"primary"} pb={2}>Користувач № {user.id}</Typography>
+
+                    <TextField
+                        label="Ім'я"
+                        variant="outlined"
+                        value={user.name}
+                        onChange={changeName}
+                        sx={{input: {textAlign: "center"},
+                            margin:"15px",
+                        }}
+
+                    />
+                    <TextField
+                        label="Email"
+                        variant="outlined"
+                        error={invalidEmail}
+                        value={user.email}
+                        onChange={changeEmail}
+                        maxWidth={"400px"}
+                        sx={{input: {textAlign: "center"},
+                            margin:"15px",
+                        }}
+                    />
+                    <Box sx={{
+                        display:"flex",
+                        justifyContent:"space-around"
+                    }}>
+                        <ToggleButtonGroup
+                            color="primary"
+                            value={user.gender}
+                            exclusive
+                            onChange={handleGenderChange}
+                            sx={{display:"flex", justifyContent:"center"}}
+                        >
+                            <ToggleButton value="female"><FemaleIcon/></ToggleButton>
+                            <ToggleButton value="male"><MaleIcon/></ToggleButton>
+                        </ToggleButtonGroup>
+                        <Box display={"flex"}>
+                            <Typography color={"black"}>Off</Typography>
+                            <Switch
+                                inputProps={{ 'aria-label': 'ant design' }}
+                                checked={user.status === "active"}
+                                onChange={handleStatusChange}
+                            />
+                            <Typography color={"black"}>On</Typography>
+                        </Box>
+
+                    </Box>
+                    <Button
+                        variant="contained"
+                        onClick={handlePutUserClicked}
+                        sx={{  margin:"15px",}}
+                    >
+                        Зберегти
+                    </Button>
+
+                </Grid>
+
+
+
             </Grid>
         )
     }
