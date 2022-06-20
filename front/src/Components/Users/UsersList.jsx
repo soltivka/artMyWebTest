@@ -27,16 +27,22 @@ const columns = [
     },
 ]
 
-const UsersList = () => {
+const UsersList = (props) => {
     const {setAlert} = useContext(AlertContext)
+    const {needFetch,setNeedFetch} = props
     const [rows, setRows] = useState([])
+
     useEffect(() => {
+        if(!needFetch){return}
         getUsers().then((data)=>{
             setRows(data)
+            setNeedFetch(()=>false)
         }).catch((error)=>{
             setAlert(error)
         })
-    },[])
+    },[needFetch])
+
+
 
     return (
         <Box sx={{

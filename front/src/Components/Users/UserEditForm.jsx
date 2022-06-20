@@ -15,7 +15,8 @@ import MaleIcon from '@mui/icons-material/Male';
 import Switch from "@mui/material/Switch";
 import {AlertContext} from "../Alert/Alert";
 
-export default function UserEditForm() {
+export default function UserEditForm(props) {
+    const {setNeedFetch} = props
     const {setAlert} = useContext(AlertContext)
     const nav = useLocation()
     const navTo = useNavigate();
@@ -29,6 +30,7 @@ export default function UserEditForm() {
         setOpen(false);
         navTo('/users')
     };
+
     const handleGenderChange = (event, choosen) => {
         if (choosen === null) {
             return
@@ -45,6 +47,8 @@ export default function UserEditForm() {
                 type:"success",
                 message:"Збережено успішно"
             })
+            console.log(data)
+            setNeedFetch(true)
             navTo('/users')
         }).catch((e)=>{
             setAlert(e)
@@ -116,11 +120,8 @@ export default function UserEditForm() {
                       p={4}
                       sx={{
                           backgroundColor:"white",
-                          display:"flex",
                           flexDirection:"column"
                 }}
-
-
                 >
                     <Typography variant={"h6"} color={"primary"} pb={2}>Користувач № {user.id}</Typography>
 
@@ -140,7 +141,6 @@ export default function UserEditForm() {
                         error={invalidEmail}
                         value={user.email}
                         onChange={changeEmail}
-                        maxWidth={"400px"}
                         sx={{input: {textAlign: "center"},
                             margin:"15px",
                         }}
