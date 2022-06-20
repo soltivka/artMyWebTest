@@ -41,16 +41,16 @@ export default function UserEditForm(props) {
         })
     }
 
-    const handlePutUserClicked = ()=>{
-        putUser(user).then((data)=>{
+    const handlePutUserClicked = () => {
+        putUser(user).then((data) => {
             setAlert({
-                type:"success",
-                message:"Збережено успішно"
+                type: "success",
+                message: "Збережено успішно"
             })
             console.log(data)
             setNeedFetch(true)
             navTo('/users')
-        }).catch((e)=>{
+        }).catch((e) => {
             setAlert(e)
         })
     }
@@ -90,7 +90,7 @@ export default function UserEditForm(props) {
             setOpen(true)
         }
         getUser(params.id).then((data) => {
-            if(data.message==="Resource not found"){
+            if (data.message === "Resource not found") {
                 navTo('/users')
                 setAlert(data.message)
             }
@@ -100,17 +100,16 @@ export default function UserEditForm(props) {
     }, [nav.pathname])
 
 
-
     const Form = () => {
         return (
             <Grid container
                   sx={{
                       width: "100%",
                       height: "100%",
-                      alignItems:"center",
-                      justifyContent:"center"
+                      alignItems: "center",
+                      justifyContent: "center"
                   }}
-                  onClick={(e) => e.stopPropagation()}
+
             >
                 <Grid item
                       xl={3}
@@ -119,9 +118,10 @@ export default function UserEditForm(props) {
                       xs={11}
                       p={4}
                       sx={{
-                          backgroundColor:"white",
-                          flexDirection:"column"
-                }}
+                          backgroundColor: "white",
+                          flexDirection: "column"
+                      }}
+                      onClick={(e) => e.stopPropagation()}
                 >
                     <Typography variant={"h6"} color={"primary"} pb={2}>Користувач № {user.id}</Typography>
 
@@ -130,8 +130,9 @@ export default function UserEditForm(props) {
                         variant="outlined"
                         value={user.name}
                         onChange={changeName}
-                        sx={{input: {textAlign: "center"},
-                            margin:"15px",
+                        sx={{
+                            input: {textAlign: "center"},
+                            margin: "15px",
                         }}
 
                     />
@@ -141,20 +142,21 @@ export default function UserEditForm(props) {
                         error={invalidEmail}
                         value={user.email}
                         onChange={changeEmail}
-                        sx={{input: {textAlign: "center"},
-                            margin:"15px",
+                        sx={{
+                            input: {textAlign: "center"},
+                            margin: "15px",
                         }}
                     />
                     <Box sx={{
-                        display:"flex",
-                        justifyContent:"space-around"
+                        display: "flex",
+                        justifyContent: "space-around"
                     }}>
                         <ToggleButtonGroup
                             color="primary"
                             value={user.gender}
                             exclusive
                             onChange={handleGenderChange}
-                            sx={{display:"flex", justifyContent:"center"}}
+                            sx={{display: "flex", justifyContent: "center"}}
                         >
                             <ToggleButton value="female"><FemaleIcon/></ToggleButton>
                             <ToggleButton value="male"><MaleIcon/></ToggleButton>
@@ -162,7 +164,7 @@ export default function UserEditForm(props) {
                         <Box display={"flex"}>
                             <Typography color={"black"}>Off</Typography>
                             <Switch
-                                inputProps={{ 'aria-label': 'ant design' }}
+                                inputProps={{'aria-label': 'ant design'}}
                                 checked={user.status === "active"}
                                 onChange={handleStatusChange}
                             />
@@ -173,13 +175,12 @@ export default function UserEditForm(props) {
                     <Button
                         variant="contained"
                         onClick={handlePutUserClicked}
-                        sx={{  margin:"15px",}}
+                        sx={{margin: "15px",}}
                     >
                         Зберегти
                     </Button>
 
                 </Grid>
-
 
 
             </Grid>
