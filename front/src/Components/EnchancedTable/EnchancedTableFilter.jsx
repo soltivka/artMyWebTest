@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {registerLocale} from 'react-datepicker';
 import ClearIcon from '@mui/icons-material/Clear';
 import IconButton from '@mui/material/IconButton';
+import Grid from "@mui/material/Grid";
 
 registerLocale('uk', uk)
 
@@ -148,33 +149,34 @@ function EnchancedFilter(props) {
                             onChange={handleFinishChange}
                         />
                     </Box>
-
                 </>
-
             )
         } else {
             return (
-                <>
-
-                    <TextField
-                        id="standard-helperText"
-                        label={filter.column.label}
-                        value={filter.value ?? ''}
-                        variant="standard"
-                        onChange={handleChangeValue}
-                    />
-                    <FormControl sx={{
-                        width: "fit-content",
-                        minWidth: "150px",
-                    }}>
-                        <InputLabel
-                            shrink={true}>Суворе порівняння</InputLabel>
-                        <Switch checked={filter.strict ?? false}
-                                sx={{position: "relative", top: "15px"}}
-                                onChange={setStrictComparison}
+                <Grid container sx={{width:"100%"}} spacing={2} pl={2}>
+                    <Grid item md={8} sm={8} xs={8}>
+                        <TextField
+                            id="standard-helperText"
+                            label={filter.column.label}
+                            value={filter.value ?? ''}
+                            variant="standard"
+                            onChange={handleChangeValue}
                         />
-                    </FormControl>
-                </>
+                    </Grid>
+                    <Grid item md={4} sm={4} xs={4}>
+                        <FormControl sx={{
+                            width: "fit-content",
+                            minWidth: "150px",
+                        }}>
+                            <InputLabel
+                                shrink={true}>Суворе порівняння</InputLabel>
+                            <Switch checked={filter.strict ?? false}
+                                    sx={{position: "relative", top: "15px"}}
+                                    onChange={setStrictComparison}
+                            />
+                        </FormControl>
+                    </Grid>
+                </Grid>
             )
         }
     }
@@ -217,8 +219,6 @@ function EnchancedFilter(props) {
                 }}>
                 <ClearIcon></ClearIcon>
             </IconButton>
-
-
         </Box>
     );
 }
