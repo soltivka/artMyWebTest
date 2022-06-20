@@ -41,6 +41,7 @@ const UsersList = () => {
     return (
         <Box sx={{
             width:"100%",
+
         }}>
             <EnchancedTable
                 rows={rows}
